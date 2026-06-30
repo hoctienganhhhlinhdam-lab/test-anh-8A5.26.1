@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đề Kiểm Tra Tiếng Anh Lớp 8 - Unit 1-2-3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#8854C0; --yellow:#FDCB6E; --teal:#00C9A7;
+  --green:#00D26A; --red:#FF4757; --purple:#7B2FF7;
+  --card-bg:#FFFFFF;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Nunito',sans-serif;
+  min-height:100vh;
+  background: linear-gradient(120deg, #8854C0, #FDCB6E, #00C9A7, #8854C0);
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease infinite;
+  position:relative;
+  overflow-x:hidden;
+  padding-bottom:80px;
+}
+@keyframes gradientShift{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+.pattern-layer{
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  pointer-events:none; z-index:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><g fill='white' opacity='0.55'><polygon points='30,5 36,22 54,22 39,33 45,50 30,40 15,50 21,33 6,22 24,22'/><circle cx='120' cy='40' r='8'/><circle cx='108' cy='40' r='7'/><circle cx='132' cy='40' r='7'/><circle cx='120' cy='28' r='7'/><circle cx='120' cy='52' r='7'/><circle cx='120' cy='40' r='5' fill='%23FDCB6E'/><ellipse cx='190' cy='100' rx='22' ry='13'/><ellipse cx='175' cy='95' rx='14' ry='10'/><ellipse cx='205' cy='95' rx='14' ry='10'/><circle cx='40' cy='150' r='14'/><polygon points='28,140 34,126 42,140' /><polygon points='40,140 46,124 54,140'/><circle cx='40' cy='150' r='2' fill='%23333'/><polygon points='200,180 210,200 220,182 230,200 200,210 190,200'/></g></svg>");
+  background-size:240px 240px;
+  background-repeat:repeat;
+  mix-blend-mode:overlay;
+  animation: floatPattern 30s linear infinite;
+}
+@keyframes floatPattern{
+  0%{background-position:0 0;}
+  100%{background-position:480px 480px;}
+}
+.container{position:relative; z-index:1; max-width:880px; margin:0 auto; padding:20px 16px 0;}
+.timer-box{
+  position:fixed; top:16px; left:16px; z-index:50;
+  background:#fff; border:4px solid var(--purple); border-radius:20px;
+  padding:10px 18px; font-family:'Quicksand',sans-serif; font-weight:800;
+  font-size:1.3em; color:var(--purple); box-shadow:0 6px 0 #5a1fb0;
+  display:flex; align-items:center; gap:8px;
+}
+.timer-box.warn{color:var(--red); border-color:var(--red); box-shadow:0 6px 0 #b71c1c; animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+.header{
+  text-align:center; color:#fff; padding:90px 10px 10px;
+}
+.header h1{
+  font-family:'Quicksand',sans-serif; font-weight:800; font-size:2em;
+  margin:0 0 6px; text-shadow:0 3px 0 rgba(0,0,0,0.18);
+}
+.header .teacher{
+  font-size:0.85em; font-weight:600; opacity:0.92; margin:0 0 4px;
+}
+.header .sub{font-weight:700; font-size:1.05em; opacity:0.95;}
+
+.card{
+  background:var(--card-bg); border-radius:20px; padding:22px 24px;
+  margin:18px 0; box-shadow:0 8px 0 rgba(0,0,0,0.15);
+  animation: pop 0.4s ease;
+}
+@keyframes pop{from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);}}
+.instr{
+  background:rgba(255,255,255,0.92); border-radius:16px; padding:14px 20px;
+  margin:18px 0 6px; font-style:italic; color:#4a2c7a; font-weight:600;
+  font-size:0.95em; box-shadow:0 4px 0 rgba(0,0,0,0.1);
+}
+.passage{
+  background:#FFF7E0; border:3px dashed var(--yellow); border-radius:16px;
+  padding:16px 20px; margin:14px 0; line-height:1.7; color:#3a2a00; font-weight:600;
+}
+.passage b{color:#8854C0;}
+.qnum{
+  font-family:'Quicksand',sans-serif; font-weight:800; color:var(--purple);
+  font-size:1.1em; margin-bottom:10px;
+}
+.qtext{font-weight:700; color:#333; margin-bottom:14px; line-height:1.5;}
+.options{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+@media(max-width:560px){.options{grid-template-columns:1fr;}}
+.opt-btn{
+  font-family:'Nunito',sans-serif; font-weight:700; font-size:1em;
+  background:#fff; border:3px solid #ddd; border-radius:16px;
+  padding:12px 16px; cursor:pointer; text-align:left;
+  box-shadow:0 5px 0 #ccc; transition:transform 0.15s ease;
+  color:#333;
+}
+.opt-btn:hover:not(.locked){transform:scale(1.04); border-color:var(--purple);}
+.opt-btn.selected{background:#EDE3FF; border-color:var(--purple); color:var(--purple); box-shadow:0 5px 0 #5a1fb0;}
+.opt-btn.locked{cursor:default;}
+.opt-btn.correct-reveal{background:#E3FCEF; border-color:var(--green); color:#067a3a; box-shadow:0 5px 0 #00913f;}
+.opt-btn.wrong-reveal{background:#FFE7E9; border-color:var(--red); color:#b3001f; box-shadow:0 5px 0 #c0392b;}
+.opt-btn.shake{animation:shakeAnim 0.45s;}
+@keyframes shakeAnim{
+  10%,90%{transform:translateX(-3px);}
+  20%,80%{transform:translateX(5px);}
+  30%,50%,70%{transform:translateX(-8px);}
+  40%,60%{transform:translateX(8px);}
+}
+.fill-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.fill-row input[type=text]{
+  flex:1; min-width:220px; font-family:'Nunito',sans-serif; font-size:1em; font-weight:700;
+  padding:10px 14px; border-radius:14px; border:3px solid #ddd; outline:none; color:#333;
+}
+.fill-row input[type=text]:focus{border-color:var(--purple); background:#F7F1FF;}
+.hint{color:#888; font-weight:700; font-size:0.85em; margin-left:4px;}
+.explain-box{
+  margin-top:10px; padding:10px 14px; border-radius:12px; background:#F2F8FF;
+  color:#1c3a5e; font-size:0.92em; font-weight:600; display:none; line-height:1.5;
+}
+.section-title{
+  color:#fff; font-family:'Quicksand',sans-serif; font-weight:800; font-size:1.3em;
+  text-shadow:0 2px 0 rgba(0,0,0,0.15); margin:26px 0 4px; text-align:center;
+}
+.sign-box{display:flex; justify-content:center; margin:14px 0;}
+.no-bully-sign{
+  width:140px; height:140px; border-radius:50%; border:8px solid #c0392b;
+  position:relative; background:#fff; display:flex; align-items:center; justify-content:center;
+  flex-direction:column;
+}
+.no-bully-sign .no-text{color:#c0392b; font-weight:900; font-size:1.6em; font-family:'Quicksand',sans-serif;}
+.no-bully-sign .bully-text{color:#c0392b; font-weight:800; font-size:0.85em;}
+.no-bully-sign::before{
+  content:''; position:absolute; width:160px; height:14px; background:#c0392b;
+  transform:rotate(-30deg); border-radius:6px;
+}
+.no-entry-sign{
+  background:#fff; border:6px solid #222; border-radius:10px; padding:16px 26px;
+  text-align:center; font-family:'Quicksand',sans-serif; font-weight:800; color:#222; font-size:1.05em;
+}
+.submit-zone{text-align:center; margin:36px 0 10px;}
+.submit-btn{
+  font-family:'Quicksand',sans-serif; font-weight:800; font-size:1.3em; color:#fff;
+  background:linear-gradient(135deg,#FF4757,#FDCB6E);
+  border:none; border-radius:24px; padding:16px 48px; cursor:pointer;
+  box-shadow:0 8px 0 #b3001f; transition:transform 0.15s ease;
+}
+.submit-btn:hover{transform:scale(1.05);}
+.submit-btn:active{transform:translateY(4px); box-shadow:0 4px 0 #b3001f;}
+
+.modal-overlay{
+  display:none; position:fixed; inset:0; background:rgba(40,20,70,0.7); z-index:100;
+  align-items:center; justify-content:center; padding:14px;
+}
+.modal-overlay.show{display:flex;}
+.modal{
+  background:#fff; border-radius:24px; max-width:700px; width:100%; max-height:88vh; overflow-y:auto;
+  padding:28px 26px; box-shadow:0 12px 0 rgba(0,0,0,0.2);
+  font-family:'Nunito',sans-serif;
+}
+.modal h2{font-family:'Quicksand',sans-serif; color:var(--purple); text-align:center; margin-top:0;}
+.score-circle{
+  width:140px; height:140px; border-radius:50%; margin:10px auto;
+  background:conic-gradient(var(--green) calc(var(--pct)*1%), #eee 0);
+  display:flex; align-items:center; justify-content:center;
+}
+.score-circle-inner{
+  width:112px; height:112px; border-radius:50%; background:#fff;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  font-family:'Quicksand',sans-serif; font-weight:800; color:#333;
+}
+.score-circle-inner .big{font-size:1.6em; color:var(--purple);}
+.matrix-table{width:100%; border-collapse:collapse; margin:16px 0; font-size:0.9em;}
+.matrix-table th,.matrix-table td{border:2px solid #eee; padding:8px 10px; text-align:left;}
+.matrix-table th{background:#F7F1FF; color:var(--purple); font-family:'Quicksand',sans-serif;}
+.tag{display:inline-block; padding:3px 10px; border-radius:10px; font-weight:800; font-size:0.82em; color:#fff;}
+.tag.mastered{background:var(--green);}
+.tag.practice{background:var(--yellow); color:#5a4400;}
+.tag.weak{background:var(--red);}
+.report-block{background:#FFF7E0; border-radius:14px; padding:14px 18px; margin:8px 0; line-height:1.6; font-size:0.93em;}
+.report-block h4{margin:0 0 6px; color:#8854C0; font-family:'Quicksand',sans-serif;}
+.close-modal-btn{
+  display:block; margin:18px auto 0; background:var(--purple); color:#fff; border:none;
+  border-radius:16px; padding:12px 30px; font-weight:800; font-family:'Quicksand',sans-serif;
+  cursor:pointer; box-shadow:0 5px 0 #5a1fb0;
+}
+.confetti-piece{
+  position:fixed; top:-10px; width:10px; height:10px; z-index:200; pointer-events:none;
+  animation: confettiFall linear forwards;
+}
+@keyframes confettiFall{
+  to{ transform: translateY(110vh) rotate(540deg); opacity:0.3; }
+}
+.review-link{color:var(--purple); text-decoration:underline; cursor:pointer; font-weight:700;}
+</style>
+</head>
+<body>
+<div class="pattern-layer"></div>
+<div class="timer-box" id="timerBox">⏰ <span id="timerText">50:00</span></div>
+
+<div class="container">
+  <div class="header">
+    <h1>ĐỀ KIỂM TRA TIẾNG ANH LỚP 8 - LẦN 1</h1>
+    <div class="sub">Chuyên đề: Unit 1 - 2 - 3 &nbsp;|&nbsp; Thời gian: 50 phút</div>
+    <div class="teacher">Giáo viên tạo: Ms. Lâm Oanh</div>
+  </div>
+
+  <div id="quizRoot"></div>
+
+  <div class="submit-zone">
+    <button class="submit-btn" id="submitBtn" onclick="submitTest()">🚀 NỘP BÀI</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const Q = [];
+
+/* ---- Section 1: Pronunciation ---- */
+Q.push({id:1, type:'mc', cat:'Phát âm & Trọng âm', section:'s1',
+  text:`<b>Question 1.</b>`,
+  options:[
+    {html:`fr<u>ui</u>t`, correct:false},
+    {html:`b<u>ui</u>lding`, correct:true},
+    {html:`j<u>ui</u>ce`, correct:false},
+    {html:`s<u>ui</u>table`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. building. Trong "fruit, juice, suitable" phần gạch chân "ui" đều phát âm là /uː/, riêng "building" phát âm là /ɪ/ (/ˈbɪldɪŋ/). Đây là một trường hợp ngoại lệ học sinh hay nhầm vì nhìn mặt chữ giống nhau nhưng âm đọc lại khác.`});
+Q.push({id:2, type:'mc', cat:'Phát âm & Trọng âm', section:'s1',
+  text:`<b>Question 2.</b>`,
+  options:[
+    {html:`vill<u>age</u>`, correct:false},
+    {html:`cott<u>age</u>`, correct:false},
+    {html:`mess<u>age</u>`, correct:false},
+    {html:`teen<u>age</u>`, correct:true}
+  ],
+  explain:`Đáp án đúng: D. teenage. Hậu tố "-age" trong village, cottage, message đều đọc là /ɪdʒ/ (vì đây là danh từ thường, trọng âm rơi vào âm trước). Riêng "teenage" là tính từ ghép, "-age" đọc là /eɪdʒ/ /ˈtiːneɪdʒ/.`});
+
+/* ---- Section 2: Stress ---- */
+Q.push({id:3, type:'mc', cat:'Phát âm & Trọng âm', section:'s2',
+  text:`<b>Question 3.</b>`,
+  options:[
+    {html:`reduce`, correct:true},
+    {html:`urban`, correct:false},
+    {html:`station`, correct:false},
+    {html:`rural`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. reduce /rɪˈdjuːs/ - trọng âm rơi vào âm tiết thứ 2. Các từ urban /ˈɜːbən/, station /ˈsteɪʃn/, rural /ˈrʊərəl/ đều có trọng âm rơi vào âm tiết thứ 1.`});
+Q.push({id:4, type:'mc', cat:'Phát âm & Trọng âm', section:'s2',
+  text:`<b>Question 4.</b>`,
+  options:[
+    {html:`pressure`, correct:true},
+    {html:`improve`, correct:false},
+    {html:`detest`, correct:false},
+    {html:`begin`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. pressure /ˈpreʃə(r)/ - trọng âm rơi vào âm tiết 1. Improve /ɪmˈpruːv/, detest /dɪˈtest/, begin /bɪˈɡɪn/ đều có trọng âm rơi vào âm tiết thứ 2.`});
+
+/* ---- Section 3: grammar MC 5-12 ---- */
+Q.push({id:5, type:'mc', cat:'Ngữ pháp & Từ vựng', section:'s3',
+  text:`<b>Question 5.</b> Please write ___________. I can't read it.`,
+  options:[
+    {html:`clear`, correct:false},{html:`unclearly`, correct:false},
+    {html:`clearly than`, correct:false},{html:`more clearly`, correct:true}
+  ],
+  explain:`Đáp án đúng: D. more clearly. Cần một trạng từ so sánh hơn để bổ nghĩa cho động từ "write"; vế sau "I can't read it" ngầm so sánh với cách viết hiện tại, nên dùng "more clearly" (rõ ràng hơn).`});
+Q.push({id:6, type:'mc', cat:'Ngữ pháp & Từ vựng', section:'s3',
+  text:`<b>Question 6.</b> We ___________ the farmers herd cattle.`,
+  options:[
+    {html:`helped`, correct:true},{html:`improved`, correct:false},
+    {html:`unloaded`, correct:false},{html:`raised`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. helped. Cấu trúc "help somebody do something" (giúp ai làm gì) - "helped the farmers herd cattle" = giúp nông dân chăn gia súc. Các từ còn lại không phù hợp về nghĩa và cấu trúc.`});
+Q.push({id:7, type:'mc', cat:'Ngữ pháp & Từ vựng', section:'s3',
+  text:`<b>Question 7.</b> I ________ to Paris three times, but I still want to go again.`,
+  options:[
+    {html:`has gone`, correct:false},{html:`went`, correct:false},
+    {html:`have been`, correct:true},{html:`was`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. have been. Câu diễn tả kinh nghiệm tính đến hiện tại ("three times"), dùng thì hiện tại hoàn thành với chủ ngữ "I" -> "have been". Lưu ý "have been to" = đã từng đến (và đã quay về), khác với "have gone to" = đã đi và chưa quay về.`});
+Q.push({id:8, type:'mc', cat:'Ngữ pháp & Từ vựng', section:'s3',
+  text:`<b>Question 8.</b> _________ fruits in a farm is one of the most popular part-time jobs among students studying abroad.`,
+  options:[
+    {html:`Picking`, correct:true},{html:`Doing`, correct:false},
+    {html:`Taking`, correct:false},{html:`Finding`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. Picking. Câu cần danh động từ (V-ing) làm chủ ngữ; "pick fruits" = hái quả là cụm động từ phù hợp ngữ cảnh làm việc trong nông trại, các động từ còn lại không phù hợp về nghĩa.`});
+Q.push({id:9, type:'mc', cat:'Ngữ pháp & Từ vựng', section:'s3',
+  text:`<b>Question 9.</b> It seems to be _________ idea that I have ever heard.`,
+  options:[
+    {html:`most brilliant`, correct:false},{html:`more brilliant`, correct:false},
+    {html:`the most brilliant`, correct:true},{html:`the more brilliant`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. the most brilliant. Mệnh đề quan hệ "that I have ever heard" là dấu hiệu nhận biết so sánh nhất (so sánh với tất cả những thứ đã từng nghe), bắt buộc có "the" đứng trước tính từ so sánh nhất.`});
+Q.push({id:10, type:'mc', cat:'Ngữ pháp & Từ vựng', section:'s3',
+  text:`<b>Question 10.</b> Her office is ________ away than mine.`,
+  options:[
+    {html:`father`, correct:false},{html:`more far`, correct:false},
+    {html:`farther`, correct:true},{html:`farer`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. farther. "Far" là tính từ có dạng so sánh hơn bất quy tắc: far - farther/further - farthest/furthest. Đi cùng "than" phía sau nên chọn dạng so sánh hơn "farther".`});
+Q.push({id:11, type:'mc', cat:'Ngữ pháp & Từ vựng', section:'s3',
+  text:`<b>Question 11.</b> Lan wants to join the school music club; _________, she can't sing or play any instruments.`,
+  options:[
+    {html:`however`, correct:true},{html:`and`, correct:false},
+    {html:`otherwise`, correct:false},{html:`so`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. however. Hai vế câu mang ý nghĩa tương phản (muốn tham gia nhưng lại không biết hát/chơi nhạc cụ), "however" (tuy nhiên) là từ nối tương phản phù hợp, đứng sau dấu chấm phẩy.`});
+Q.push({id:12, type:'mc', cat:'Ngữ pháp & Từ vựng', section:'s3',
+  text:`<b>Question 12.</b> Nick: Could you tell me how to deal with a bully? - Mi: ________.`,
+  options:[
+    {html:`That's very kind of you. Thanks`, correct:false},
+    {html:`Who's he? I don't know him`, correct:false},
+    {html:`You should talk to your parents about him`, correct:true},
+    {html:`Yes, I'd love to`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. Đây là tình huống xin lời khuyên (asking for advice). Câu trả lời hợp lý nhất là một lời khuyên cụ thể: "You should talk to your parents about him" (Bạn nên nói chuyện với bố mẹ về việc này).`});
+
+/* ---- Section 4: Announcement cloze 13-16 ---- */
+Q.push({id:13, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s4',
+  text:`<b>Question 13.</b>`,
+  options:[
+    {html:`city`, correct:false},{html:`countryside`, correct:true},
+    {html:`sea`, correct:false},{html:`urban area`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. countryside. Câu sau đó nói "experience what life is like outside the city" (trải nghiệm cuộc sống bên ngoài thành phố) -> Green Valley Farm nằm "in the countryside" (vùng nông thôn).`});
+Q.push({id:14, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s4',
+  text:`<b>Question 14.</b>`,
+  options:[
+    {html:`clean`, correct:false},{html:`cleaner`, correct:true},
+    {html:`cleanest`, correct:false},{html:`dirty`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. cleaner. Cấu trúc so sánh hơn "much + adj-er + than" -> "much cleaner than in the city" (sạch hơn nhiều so với trong thành phố).`});
+Q.push({id:15, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s4',
+  text:`<b>Question 15.</b>`,
+  options:[
+    {html:`at`, correct:false},{html:`into`, correct:true},
+    {html:`on`, correct:false},{html:`above`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. into. "Ride a buffalo into the fields" diễn tả hành động cưỡi trâu tiến vào trong những cánh đồng, phù hợp giới từ chỉ chuyển động hướng vào trong "into".`});
+Q.push({id:16, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s4',
+  text:`<b>Question 16.</b>`,
+  options:[
+    {html:`good`, correct:false},{html:`goodly`, correct:false},
+    {html:`better`, correct:true},{html:`best`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. better. Trạng từ so sánh hơn bổ nghĩa cho động từ "understand" -> "understand rural life better" (hiểu hơn về cuộc sống nông thôn).`});
+
+/* ---- Section 5: ordering 17-18 ---- */
+Q.push({id:17, type:'mc', cat:'Đọc hiểu - Liên kết câu', section:'s5',
+  text:`<b>Question 17.</b> Choose the best order for a, b, c.`,
+  options:[
+    {html:`a - b - c`, correct:false},{html:`b - a - c`, correct:false},
+    {html:`c - a - b`, correct:true},{html:`a - c - b`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. c - a - b. Câu (c) nêu ý chính đầu tiên với từ nối "First" (sự yên bình), câu (a) bổ sung ý với "Moreover" (không khí trong lành), câu (b) kết bằng "Finally" (nhà truyền thống có vườn). Thứ tự từ nối First - Moreover - Finally cho biết trình tự logic là c-a-b.`});
+Q.push({id:18, type:'mc', cat:'Đọc hiểu - Liên kết câu', section:'s5',
+  text:`<b>Question 18.</b> Choose the sentence that most appropriately ends the text.`,
+  options:[
+    {html:`My grandparents often visit us in the city during Tet holiday.`, correct:false},
+    {html:`My grandparents prefer living in the countryside because of its quiet atmosphere and fresh environment.`, correct:false},
+    {html:`There are not many shopping malls or cinemas in the village.`, correct:false},
+    {html:`I sometimes help my grandma feed the chickens and water the plants.`, correct:true}
+  ],
+  explain:`Đáp án đúng: D. Câu cuối nên là một chi tiết cá nhân gắn liền với ý "raise animals" và "grow vegetables" vừa nhắc ở câu (b), tạo sự liền mạch và sinh động cho đoạn văn, thay vì lặp lại ý khái quát đã nói (như đáp án B) hay lạc đề (A, C).`});
+
+/* ---- Section 6: passage cloze 19-24 ---- */
+Q.push({id:19, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s6',
+  text:`<b>Question 19.</b>`,
+  options:[
+    {html:`Although`, correct:true},{html:`Therefore`, correct:false},
+    {html:`Despite`, correct:false},{html:`Because`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. Although. Mệnh đề sau dấu phẩy mang ý tương phản với mệnh đề trước (vừa có "happy moments" vừa có "pressure"), "Although" + mệnh đề là cấu trúc nhượng bộ phù hợp (chỉ "Although" và "Because" đi được với mệnh đề đầy đủ S+V, còn "Despite" cần V-ing/N).`});
+Q.push({id:20, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s6',
+  text:`<b>Question 20.</b>`,
+  options:[
+    {html:`at`, correct:false},{html:`on`, correct:true},
+    {html:`Despite`, correct:false},{html:`Because`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. on. Cụm từ cố định "pressure on somebody" (áp lực đặt lên ai) -> "pressure on teenagers to succeed".`});
+Q.push({id:21, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s6',
+  text:`<b>Question 21.</b>`,
+  options:[
+    {html:`much`, correct:false},{html:`lot of`, correct:false},
+    {html:`many`, correct:true},{html:`little`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. many. "Teenagers" là danh từ đếm được số nhiều, cần lượng từ "many" (nhiều). "Much" dùng cho danh từ không đếm được, "lot of" thiếu "a" ở trước, "little" mang nghĩa "ít" không phù hợp.`});
+Q.push({id:22, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s6',
+  text:`<b>Question 22.</b>`,
+  options:[
+    {html:`to try`, correct:false},{html:`trying`, correct:true},
+    {html:`try`, correct:false},{html:`tried`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. trying. Cấu trúc thì hiện tại tiếp diễn "are always + V-ing" diễn tả một thói quen lặp đi lặp lại (thường mang sắc thái than phiền) -> "are always trying to outdo...".`});
+Q.push({id:23, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s6',
+  text:`<b>Question 23.</b>`,
+  options:[
+    {html:`surf`, correct:false},{html:`grow`, correct:false},
+    {html:`raise`, correct:false},{html:`meet`, correct:true}
+  ],
+  explain:`Đáp án đúng: D. meet. Cụm từ cố định "meet expectations" (đáp ứng kỳ vọng) là cụm collocation phổ biến trong tiếng Anh, phù hợp ngữ cảnh "đáp ứng kỳ vọng cao mà cha mẹ và thầy cô đặt ra".`});
+Q.push({id:24, type:'mc', cat:'Đọc hiểu - Điền từ', section:'s6',
+  text:`<b>Question 24.</b>`,
+  options:[
+    {html:`a`, correct:false},{html:`an`, correct:true},
+    {html:`the`, correct:false},{html:`ø (không có mạo từ)`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. an. "Early" bắt đầu bằng âm nguyên âm /ɜː/, nên mạo từ không xác định phải dùng là "an" -> "from an early age" (từ khi còn nhỏ).`});
+
+/* ---- Section 7: rewrite 25-26 ---- */
+Q.push({id:25, type:'fill', cat:'Viết lại câu', section:'s7',
+  text:`<b>Question 25.</b> She likes going shopping better than going swimming. <span class="hint">(TO)</span>`,
+  accepted:[`she prefers going shopping to going swimming`],
+  explain:`Đáp án: "She prefers going shopping to going swimming." Cấu trúc "prefer + V-ing + to + V-ing" diễn tả sự ưu tiên/thích cái này hơn cái kia, tương đương nghĩa với "like...better than".`});
+Q.push({id:26, type:'fill', cat:'Viết lại câu', section:'s7',
+  text:`<b>Question 26.</b> Your village is more peaceful than my village. <span class="hint">(AS)</span>`,
+  accepted:[`my village is not as peaceful as your village`, `my village isn't as peaceful as your village`],
+  explain:`Đáp án: "My village is not as peaceful as your village." Khi A hơn B (more...than), ta có thể viết lại theo chiều ngược: B không bằng A, dùng cấu trúc "not as...as".`});
+
+/* ---- Section 8: sentence building 27-28 ---- */
+Q.push({id:27, type:'mc', cat:'Sắp xếp câu', section:'s8',
+  text:`<b>Question 27.</b> They / help / parents / pick / fruit / orchard / now.`,
+  options:[
+    {html:`They helps their parents pick fruit at the orchard now.`, correct:false},
+    {html:`They are helping their parents pick fruit in the orchard now.`, correct:false},
+    {html:`They help their parents picking fruit on the orchard now.`, correct:false},
+    {html:`They are helping their parents pick fruit at the orchard now.`, correct:true}
+  ],
+  explain:`Đáp án đúng: D. Có "now" -> phải dùng thì hiện tại tiếp diễn "are helping" (không phải "helps" - sai chủ ngữ số nhiều, không phải "help" - thiếu tiếp diễn). Cấu trúc "help sb + V-inf" -> "help their parents pick fruit". Giới từ chỉ vị trí cụ thể tại nông trại dùng "at the orchard".`});
+Q.push({id:28, type:'mc', cat:'Sắp xếp câu', section:'s8',
+  text:`<b>Question 28.</b> Children / often / ride / bicycles / paddy fields / their free time.`,
+  options:[
+    {html:`Children often rides bicycles through paddy fields in their free time.`, correct:false},
+    {html:`Children often ride bicycles through paddy fields at their free time.`, correct:false},
+    {html:`Children often ride bicycles through paddy fields on their free time.`, correct:false},
+    {html:`Children often ride bicycles through paddy fields in their free time.`, correct:true}
+  ],
+  explain:`Đáp án đúng: D. Chủ ngữ "Children" số nhiều -> động từ giữ nguyên "ride" (không thêm s). "Through paddy fields" diễn tả đi xuyên qua những cánh đồng. Cụm thời gian "free time" đi với giới từ "in" -> "in their free time".`});
+
+/* ---- Section 9: signs 29-30 ---- */
+Q.push({id:29, type:'mc', cat:'Đọc hiểu biển báo', section:'s9', sign:'bully',
+  text:`<b>Question 29.</b> What does the sign say?`,
+  options:[
+    {html:`Students can tease each other for fun.`, correct:false},
+    {html:`Bullying others is not allowed here.`, correct:true},
+    {html:`Everyone must report bullying to the police.`, correct:false},
+    {html:`Teachers are allowed to punish students.`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. Biển báo "NO BULLYING" với hình tròn gạch chéo đỏ mang nghĩa cấm bắt nạt -> "Bullying others is not allowed here" (Cấm bắt nạt người khác ở đây).`});
+Q.push({id:30, type:'mc', cat:'Đọc hiểu biển báo', section:'s9', sign:'entry',
+  text:`<b>Question 30.</b> What does the notice say? (NO ENTRY – STAFF ONLY)`,
+  options:[
+    {html:`Only staff members are allowed to go into this area.`, correct:true},
+    {html:`Students and visitors can enter freely.`, correct:false},
+    {html:`Everyone must meet a staff member before entering.`, correct:false},
+    {html:`Staff members are not allowed beyond this point.`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. "NO ENTRY - STAFF ONLY" nghĩa là cấm vào, chỉ nhân viên mới được phép -> "Only staff members are allowed to go into this area."`});
+
+/* ---- Section 10: reading 31-36 ---- */
+const passage1Text = `Living in the country is something that people from the city often dream about. However, in reality, it has both advantages and disadvantages.<br><br>
+There are certainly many advantages to living in the country. First, you can enjoy peace and quietness. Moreover, people tend to be friendlier. A further advantage is that there is less traffic, so it is safer for young children.<br><br>
+However, there are certain disadvantages or drawbacks to life outside the city. First, because there are fewer people, you are likely to have few friends. In addition, entertainment is difficult to find, particularly in the evening. Furthermore, the fact that there are fewer shops and services means that it is hard to find jobs.<br><br>
+In short, it can be seen that the country is more suitable for some people than others. On the whole, it is often the best for those who are retired or who have young children. In contrast, young people who have a career are better provided in the city. (165 words)`;
+
+Q.push({id:31, type:'mc', cat:'Đọc hiểu đoạn văn', section:'s10',
+  text:`<b>Question 31.</b> According to the passage, living in the country has _________.`,
+  options:[
+    {html:`only good points`, correct:false},{html:`only bad points`, correct:false},
+    {html:`both good and bad points`, correct:true},{html:`no disadvantages`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. Bài đọc nêu rõ "it has both advantages and disadvantages" (vừa có ưu điểm vừa có nhược điểm) ngay từ câu đầu.`});
+Q.push({id:32, type:'mc', cat:'Đọc hiểu đoạn văn', section:'s10',
+  text:`<b>Question 32.</b> The word "advantages" in paragraph 2 is CLOSEST in meaning to _________.`,
+  options:[
+    {html:`benefits`, correct:true},{html:`problems`, correct:false},
+    {html:`difficulties`, correct:false},{html:`solutions`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. benefits (lợi ích) đồng nghĩa với "advantages" (ưu điểm/lợi thế). Các từ còn lại mang nghĩa tiêu cực hoặc không liên quan.`});
+Q.push({id:33, type:'mc', cat:'Đọc hiểu đoạn văn', section:'s10',
+  text:`<b>Question 33.</b> The word "hard" in paragraph 3 is OPPOSITE in meaning to _________.`,
+  options:[
+    {html:`comfortable`, correct:false},{html:`lazy`, correct:false},
+    {html:`easy`, correct:true},{html:`convenient`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. easy. "Hard" trong câu "it is hard to find jobs" nghĩa là khó khăn, trái nghĩa với "easy" (dễ dàng).`});
+Q.push({id:34, type:'mc', cat:'Đọc hiểu đoạn văn', section:'s10',
+  text:`<b>Question 34.</b> Living in the country is safer for young children because _________`,
+  options:[
+    {html:`there is less traffic`, correct:true},{html:`there are few shops`, correct:false},
+    {html:`there are fewer people`, correct:false},{html:`there are few services`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. Bài đọc nêu rõ: "there is less traffic, so it is safer for young children" (ít giao thông hơn nên an toàn hơn cho trẻ nhỏ).`});
+Q.push({id:35, type:'mc', cat:'Đọc hiểu đoạn văn', section:'s10',
+  text:`<b>Question 35.</b> Which of the following statements is NOT true according to the passage?`,
+  options:[
+    {html:`People in the country tend to be friendlier than people in the city.`, correct:false},
+    {html:`It's hard to find entertainment in the country.`, correct:false},
+    {html:`There are fewer shops and services in the country.`, correct:false},
+    {html:`The country is only suitable for retired people.`, correct:true}
+  ],
+  explain:`Đáp án đúng: D. Bài đọc nói nông thôn phù hợp cho "those who are retired OR who have young children" (người về hưu HOẶC người có con nhỏ), không phải "chỉ" (only) dành cho người về hưu -> câu D sai so với bài đọc.`});
+Q.push({id:36, type:'mc', cat:'Đọc hiểu đoạn văn', section:'s10',
+  text:`<b>Question 36.</b> Having few friends is _________.`,
+  options:[
+    {html:`one of drawbacks to life in the country`, correct:false},
+    {html:`the only disadvantage to living in the country`, correct:false},
+    {html:`one of certain drawbacks to life outside the city`, correct:true},
+    {html:`one of certain advantages to life outside the city`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. Bài đọc dùng đúng cụm từ "certain disadvantages or drawbacks to life outside the city", và "having few friends" chỉ là một trong số đó (không phải nhược điểm duy nhất, và đây là nhược điểm chứ không phải ưu điểm).`});
+
+/* ---- Section 11: gapped text 37-40 ---- */
+Q.push({id:37, type:'mc', cat:'Đọc hiểu - Liên kết câu', section:'s11',
+  text:`<b>Question 37.</b>`,
+  options:[
+    {html:`the farmers harvest them and then winter comes`, correct:false},
+    {html:`how wonderful four seasons are`, correct:true},
+    {html:`There's always something tasty that's just come in season`, correct:false},
+    {html:`City people spend half their lives indoors or underground`, correct:false}
+  ],
+  explain:`Đáp án đúng: B. "I'm not sure how many people ever think (37)..." cần một cụm danh từ làm tân ngữ cho "think about" -> "how wonderful four seasons are" (bốn mùa tuyệt vời như thế nào), mở đầu chủ đề của cả đoạn văn.`});
+Q.push({id:38, type:'mc', cat:'Đọc hiểu - Liên kết câu', section:'s11',
+  text:`<b>Question 38.</b>`,
+  options:[
+    {html:`the farmers harvest them and then winter comes`, correct:false},
+    {html:`how wonderful four seasons are`, correct:false},
+    {html:`There's always something tasty that's just come in season`, correct:false},
+    {html:`City people spend half their lives indoors or underground`, correct:true}
+  ],
+  explain:`Đáp án đúng: D. Câu trước nói "people who live in cities don't care about the seasons", câu (38) cần giải thích lý do tại sao -> "City people spend half their lives indoors or underground" (người thành phố dành nửa cuộc đời trong nhà/dưới lòng đất nên không để ý mùa).`});
+Q.push({id:39, type:'mc', cat:'Đọc hiểu - Liên kết câu', section:'s11',
+  text:`<b>Question 39.</b>`,
+  options:[
+    {html:`the farmers harvest them and then winter comes`, correct:true},
+    {html:`how wonderful four seasons are`, correct:false},
+    {html:`There's always something tasty that's just come in season`, correct:false},
+    {html:`City people spend half their lives indoors or underground`, correct:false}
+  ],
+  explain:`Đáp án đúng: A. "Just before autumn arrives, (39)..." cần một sự kiện xảy ra ngay trước khi thu đến và nối tiếp sang đông -> "the farmers harvest them and then winter comes" (nông dân thu hoạch rồi mùa đông đến), khớp với mạch thời gian xuân-hạ-thu-đông đã nêu.`});
+Q.push({id:40, type:'mc', cat:'Đọc hiểu - Liên kết câu', section:'s11',
+  text:`<b>Question 40.</b>`,
+  options:[
+    {html:`the farmers harvest them and then winter comes`, correct:false},
+    {html:`how wonderful four seasons are`, correct:false},
+    {html:`There's always something tasty that's just come in season`, correct:true},
+    {html:`City people spend half their lives indoors or underground`, correct:false}
+  ],
+  explain:`Đáp án đúng: C. "One wonderful thing about seasons is the seasonal food you get. (40)..." cần một câu bổ sung ý về món ăn theo mùa -> "There's always something tasty that's just come in season" (luôn có món gì đó ngon vừa vào mùa).`});
+
+/* ---- Section 12: 10 extra rewrites 41-50 ---- */
+Q.push({id:41, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`This dress is not as expensive as that skirt. <span class="hint">(MORE)</span>`,
+  accepted:[`that skirt is more expensive than this dress`],
+  explain:`Đáp án: "That skirt is more expensive than this dress." Khi A không bằng B (not as...as), nghĩa là B hơn A, viết lại theo so sánh hơn "more...than".`});
+Q.push({id:42, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`My presentation was better than yours. <span class="hint">(AS - AS)</span>`,
+  accepted:[`your presentation was not as good as mine`, `your presentation wasn't as good as mine`],
+  explain:`Đáp án: "Your presentation was not as good as mine." A hơn B (better than) -> viết lại B không bằng A bằng cấu trúc "not as good as".`});
+Q.push({id:43, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`Ha Long Bay is more wonderful than any other bays in Vietnam. <span class="hint">(THE)</span>`,
+  accepted:[`ha long bay is the most wonderful bay in vietnam`],
+  explain:`Đáp án: "Ha Long Bay is the most wonderful bay in Vietnam." So sánh hơn với "any other" tương đương với so sánh nhất, dùng "the most + adj".`});
+Q.push({id:44, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`I'm interested in Korean music. <span class="hint">(FANCY)</span>`,
+  accepted:[`i fancy korean music`],
+  explain:`Đáp án: "I fancy Korean music." Động từ "fancy" mang nghĩa "thích, hứng thú với" tương đương "be interested in".`});
+Q.push({id:45, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`The rain is so heavy, so I can't go to school. <span class="hint">(FOR)</span>`,
+  accepted:[`the rain is too heavy for me to go to school`],
+  explain:`Đáp án: "The rain is too heavy for me to go to school." Cấu trúc "too + adj + for sb + to V" diễn tả mức độ quá lớn dẫn đến không thể làm việc gì đó.`});
+Q.push({id:46, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`Losing weight is not as easy as gaining weight. <span class="hint">(THAN)</span>`,
+  accepted:[`gaining weight is easier than losing weight`],
+  explain:`Đáp án: "Gaining weight is easier than losing weight." A không dễ bằng B (not as easy as) nghĩa là B dễ hơn A -> viết lại bằng so sánh hơn "easier than".`});
+Q.push({id:47, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`Tam drives car more carefully than his son. <span class="hint">(CARELESSLY)</span>`,
+  accepted:[`tams son drives more carelessly than tam`, `tam's son drives more carelessly than tam`, `tam's son drives the car more carelessly than tam`, `tams son drives car more carelessly than tam`],
+  explain:`Đáp án: "Tam's son drives (the car) more carelessly than Tam." Tam cẩn thận hơn con trai nghĩa là con trai bất cẩn hơn Tam, dùng tính từ trái nghĩa "carelessly" ở dạng so sánh hơn.`});
+Q.push({id:48, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`She sings better than anybody else in the class. <span class="hint">(THE)</span>`,
+  accepted:[`she is the best singer in the class`],
+  explain:`Đáp án: "She is the best singer in the class." So sánh hơn với "anybody else" tương đương so sánh nhất; "better" -> "the best".`});
+Q.push({id:49, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`Jack is smart and hard-working. He is a big bully. <span class="hint">(however)</span>`,
+  accepted:[`jack is smart and hard-working however he is a big bully`, `jack is smart and hard-working, however, he is a big bully`],
+  explain:`Đáp án: "Jack is smart and hard-working; however, he is a big bully." Dùng "however" để nối hai vế có ý tương phản, thường có dấu chấm phẩy hoặc dấu chấm trước "however" và dấu phẩy sau.`});
+Q.push({id:50, type:'fill', cat:'Viết lại câu', section:'s12',
+  text:`There is no Internet access. The websites are not loading. <span class="hint">(therefore)</span>`,
+  accepted:[`there is no internet access therefore the websites are not loading`, `there is no internet access, therefore, the websites are not loading`],
+  explain:`Đáp án: "There is no Internet access; therefore, the websites are not loading." "Therefore" (vì vậy) diễn tả quan hệ nguyên nhân - kết quả giữa hai vế câu.`});
+
+/* ================= STATE ================= */
+const answers = {}; // id -> {selected:'html', correct:bool} for mc ; {value:'text'} for fill
+let timeLeft = 50*60;
+let timerInterval = null;
+let submitted = false;
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+/* ================= AUDIO ================= */
+let actx;
+function getCtx(){ if(!actx){ actx = new (window.AudioContext||window.webkitAudioContext)(); } return actx; }
+function playDing(){
+  try{
+    const ctx=getCtx();
+    [880,1320].forEach((f,i)=>{
+      const o=ctx.createOscillator(), g=ctx.createGain();
+      o.type='sine'; o.frequency.value=f;
+      o.connect(g); g.connect(ctx.destination);
+      const t=ctx.currentTime+i*0.09;
+      g.gain.setValueAtTime(0.0001,t);
+      g.gain.exponentialRampToValueAtTime(0.25,t+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+0.32);
+      o.start(t); o.stop(t+0.34);
+    });
+  }catch(e){}
+}
+function playBuzz(){
+  try{
+    const ctx=getCtx();
+    const o=ctx.createOscillator(), g=ctx.createGain();
+    o.type='sawtooth';
+    o.frequency.setValueAtTime(220,ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(110,ctx.currentTime+0.35);
+    o.connect(g); g.connect(ctx.destination);
+    g.gain.setValueAtTime(0.0001,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.22,ctx.currentTime+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.4);
+    o.start(); o.stop(ctx.currentTime+0.42);
+  }catch(e){}
+}
+
+/* ================= CONFETTI ================= */
+function confettiBurst(n){
+  const colors=['#8854C0','#FDCB6E','#00C9A7','#00D26A','#FF4757','#7B2FF7'];
+  for(let i=0;i<n;i++){
+    const el=document.createElement('div');
+    el.className='confetti-piece';
+    el.style.left=(Math.random()*100)+'vw';
+    el.style.background=colors[Math.floor(Math.random()*colors.length)];
+    el.style.borderRadius=Math.random()>0.5?'50%':'2px';
+    const dur=2+Math.random()*1.5;
+    el.style.animationDuration=dur+'s';
+    el.style.opacity='1';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(), dur*1000+200);
+  }
+}
+
+/* ================= RENDER ================= */
+const root = document.getElementById('quizRoot');
+
+function sectionInstr(html){
+  const d=document.createElement('div');
+  d.className='instr';
+  d.innerHTML=html;
+  root.appendChild(d);
+}
+function sectionTitle(html){
+  const d=document.createElement('div');
+  d.className='section-title';
+  d.innerHTML=html;
+  root.appendChild(d);
+}
+function passageBlock(html){
+  const d=document.createElement('div');
+  d.className='passage';
+  d.innerHTML=html;
+  root.appendChild(d);
+}
+
+function renderQuestion(q){
+  const shuffledOpts = q.type==='mc' ? shuffle(q.options) : null;
+  const card=document.createElement('div');
+  card.className='card';
+  card.id='card-'+q.id;
+
+  let inner = `<div class="qtext">${q.text}</div>`;
+
+  if(q.sign==='bully'){
+    inner += `<div class="sign-box"><div class="no-bully-sign"><div class="no-text">NO</div><div class="bully-text">BULLYING</div></div></div>`;
+  } else if(q.sign==='entry'){
+    inner += `<div class="sign-box"><div class="no-entry-sign">NO ENTRY<br>STAFF ONLY</div></div>`;
+  }
+
+  if(q.type==='mc'){
+    inner += `<div class="options">`;
+    const letters=['A','B','C','D'];
+    shuffledOpts.forEach((opt,idx)=>{
+      inner += `<button class="opt-btn" data-correct="${opt.correct}" data-qid="${q.id}" onclick="selectOption(this,${q.id})"><b>${letters[idx]}.</b> ${opt.html}</button>`;
+    });
+    inner += `</div>`;
+  } else {
+    inner += `<div class="fill-row"><span style="font-weight:800;color:#8854C0;">=&gt;</span><input type="text" id="fill-${q.id}" placeholder="Nhập câu trả lời của bạn..." /></div>`;
+  }
+  inner += `<div class="explain-box" id="explain-${q.id}">💡 ${q.explain}</div>`;
+
+  card.innerHTML = inner;
+  root.appendChild(card);
+}
+
+function selectOption(btn, qid){
+  if(submitted) return;
+  const card = document.getElementById('card-'+qid);
+  if(card.dataset.locked==='1') return;
+  card.dataset.locked='1';
+  const allBtns = card.querySelectorAll('.opt-btn');
+  const isCorrect = btn.dataset.correct === 'true';
+  allBtns.forEach(b=>{ b.classList.add('locked'); });
+  btn.classList.add('selected');
+  if(isCorrect){
+    btn.classList.add('correct-reveal');
+    playDing();
+    confettiBurst(18);
+  } else {
+    btn.classList.add('wrong-reveal');
+    btn.classList.add('shake');
+    playBuzz();
+    allBtns.forEach(b=>{ if(b.dataset.correct==='true') b.classList.add('correct-reveal'); });
+  }
+  answers[qid] = {correct:isCorrect};
+}
+
+/* Build full layout in original order */
+sectionInstr(`Mark the letter A, B, C or D on your answer sheet to indicate the word whose underlined part differs from the other three in pronunciation in each of the following questions.`);
+[1,2].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionInstr(`Mark the letter A, B, C or D on your answer sheet to indicate the word that differs from the other three in the position of primary stress in each of the following questions.`);
+[3,4].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionInstr(`Mark the letter A, B, C or D on your answer sheet to indicate the correct answer to each of the following questions.`);
+[5,6,7,8,9,10,11,12].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionInstr(`Read the following announcement and mark the letter A, B, C or D on your answer sheet to indicate the correct option that best fits each of the numbered blanks from 13 to 16.`);
+passageBlock(`<b>SCHOOL TRIP TO GREEN VALLEY FARM!</b><br><br>
+Dear Students,<br><br>
+Get ready for an exciting field trip! Our school is organizing a day trip to Green Valley Farm, a beautiful and peaceful place in the (13) _________. This trip is a great opportunity to experience what life is like outside the city.<br><br>
+During our visit, you will learn about farming, feed farm animals, and even try picking fresh vegetables. The air there is much (14) _________ than in the city, and the scenery is truly wonderful. You can also ride a buffalo (15) _________ the fields! We believe this trip will help you understand rural life (16) _________ and appreciate the natural beauty of our country. Don't forget to register by next Friday!`);
+[13,14,15,16].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionInstr(`Mark the letter A, B, C or D on your answer sheet to indicate the correct answer to each of the following questions.`);
+passageBlock(`My grandparents live in a small village, and life there is very different from the city. Here's what it's like _____.<br><br>
+a. Moreover, the air is much cleaner, and you can hear the birds singing every morning.<br>
+b. Finally, people usually live in traditional houses with large gardens where they grow vegetables and raise animals.<br>
+c. First, it's generally more peaceful, and the streets are not as crowded as in urban areas.`);
+[17].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+sectionInstr(`Choose the sentence that most appropriately ends the text (in question 17).`);
+[18].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionInstr(`Read the following passage and mark the letter A, B, C or D on your answer sheet to indicate the option that best fits each numbered blank from 19 to 24.`);
+passageBlock(`(19) _________ the teenage years are filled with so many happy moments and memories, there also is a big amount of pressure (20) _________ teenagers to succeed in school, work, sports, or extracurricular. What is all this pressure for? While so (21) _________ teenagers will say college, I believe there is a much deeper answer to this. Teenagers are always (22) _________ to outdo and compare themselves to their peers. They want to (23) _________ the high expectations that their parents and teachers have put on them from (24) _________ early age.`);
+[19,20,21,22,23,24].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionTitle(`✍️ Rewrite sentences without changing the meaning, using the word given.`);
+[25,26].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionInstr(`Mark the letter A, B, C or D on your answer sheet to indicate the sentence that is made from the given cues in each of the following questions.`);
+[27,28].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionTitle(`🪧 Read the signs and notices`);
+[29,30].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionInstr(`Read the following passage and mark the letter A, B, C or D on your answer sheet to indicate the correct answer to each of the following questions from 31 to 36.`);
+passageBlock(passage1Text);
+[31,32,33,34,35,36].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionInstr(`Four phrases/sentences have been removed from the text below. For each question, mark the letter A, B, C or D on your answer sheet to indicate the correct option that best fits each of the numbered blanks from 37 to 40.`);
+passageBlock(`I'm not sure how many people ever think (37) _________. I think people who live in cities don't care about the seasons. (38) _________. I live in the country and I love watching the seasons come and go. Every day is different in the countryside. I love watching the crops grow in the fields. I watch them push their way up from the ground in the spring and then grow tall in the summer sun. Just before autumn arrives, (39) _________. Seasons means it's like living in a new place every four months. Everything changes. One wonderful thing about seasons is the seasonal food you get. (40) _________.`);
+[37,38,39,40].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+sectionTitle(`✍️ VIẾT LẠI CÁC CÂU SAU SAO CHO NGHĨA KHÔNG ĐỔI`);
+[41,42,43,44,45,46,47,48,49,50].forEach(id=>renderQuestion(Q.find(q=>q.id===id)));
+
+/* ================= TIMER ================= */
+function formatTime(s){
+  const m=Math.floor(s/60), sec=s%60;
+  return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');
+}
+function startTimer(){
+  const timerText=document.getElementById('timerText');
+  const timerBox=document.getElementById('timerBox');
+  timerText.textContent=formatTime(timeLeft);
+  timerInterval=setInterval(()=>{
+    timeLeft--;
+    if(timeLeft<=0){
+      timeLeft=0;
+      timerText.textContent='00:00';
+      clearInterval(timerInterval);
+      if(!submitted) submitTest();
+      return;
+    }
+    if(timeLeft<=300) timerBox.classList.add('warn');
+    timerText.textContent=formatTime(timeLeft);
+  },1000);
+}
+startTimer();
+
+/* ================= NORMALIZE TEXT ================= */
+function normalize(str){
+  return str.toLowerCase()
+    .replace(/[.,!;:'"’‘“”]/g,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+/* ================= TOPIC CATEGORY MAPPING ================= */
+const ROOT_CAUSE = {
+  'Phát âm & Trọng âm': {
+    cause:'Hổng kiến thức nền (Knowledge Gap)',
+    detail:'Học sinh chưa nắm chắc quy tắc phát âm đuôi từ và quy tắc đánh trọng âm theo loại từ/hậu tố. Đây là lỗi do thiếu kiến thức nền tảng về ngữ âm chứ không phải do ẩu, cần luyện nghe và học bảng quy tắc trọng âm thường xuyên.'
+  },
+  'Ngữ pháp & Từ vựng': {
+    cause:'Hổng Ngữ pháp (Grammar Gap)',
+    detail:'Học sinh còn nhầm lẫn giữa các cấu trúc ngữ pháp (so sánh hơn/nhất, thì động từ, collocation cố định). Cần hệ thống lại bảng cấu trúc so sánh và các collocation thường gặp trong đề thi.'
+  },
+  'Đọc hiểu - Điền từ': {
+    cause:'Thiếu Kỹ năng làm bài (Skill Deficit)',
+    detail:'Khi làm dạng điền từ vào đoạn văn, học sinh có xu hướng chọn theo cảm tính từng từ riêng lẻ mà chưa đọc toàn câu/toàn đoạn để nắm mạch logic, dẫn đến chọn sai dù từ vựng không khó. Cần luyện kỹ năng đọc lướt (skim) để nắm ý chính trước khi điền.'
+  },
+  'Viết lại câu': {
+    cause:'Hổng Ngữ pháp khi chuyển đổi cấu trúc (Grammar Gap)',
+    detail:'Học sinh chưa thành thạo việc quy đổi giữa các cấu trúc tương đương nghĩa (so sánh hơn - so sánh nhất - as...as, prefer...to, too...for...to, however/therefore). Cần luyện viết lại theo từng cặp cấu trúc cụ thể, lặp lại nhiều lần để ghi nhớ khuôn mẫu.'
+  },
+  'Sắp xếp câu': {
+    cause:'Hổng Ngữ pháp - chia động từ & trật tự từ (Grammar Gap)',
+    detail:'Lỗi sai thường đến từ việc chưa chia đúng thì động từ theo dấu hiệu thời gian (now, often...) hoặc dùng sai giới từ chỉ vị trí/thời gian. Cần ôn lại dấu hiệu nhận biết thì và bảng giới từ thông dụng.'
+  },
+  'Đọc hiểu biển báo': {
+    cause:'Thiếu Kỹ năng làm bài thực tế (Skill Deficit)',
+    detail:'Đây là dạng đọc hiểu thông tin biển báo/thông báo thực tế - nếu sai, nguyên nhân thường do học sinh chưa quen với văn phong rút gọn của biển báo (không phải câu hoàn chỉnh), cần luyện thêm với các loại biển báo, thông báo thường gặp trong đời sống.'
+  },
+  'Đọc hiểu đoạn văn': {
+    cause:'Thiếu Kỹ năng làm bài - Scan/Skim (Skill Deficit)',
+    detail:'Đây là lỗi phổ biến nhất ở học sinh: đọc từ đầu đến cuối, cố dịch từng từ thay vì gạch chân từ khóa (keywords) trong câu hỏi rồi quay lại dò trong bài, dẫn đến mất thời gian và dễ bị đáp án nhiễu đánh lừa (đặc biệt là các đáp án có từ "only", "always", "never" mang nghĩa tuyệt đối).'
+  },
+  'Đọc hiểu - Liên kết câu': {
+    cause:'Thiếu Kỹ năng làm bài - nhận diện từ nối & mạch logic (Skill Deficit)',
+    detail:'Dạng bài chèn câu/cụm từ vào đoạn văn đòi hỏi kỹ năng nhận diện từ nối (Moreover, Finally, However...) và mạch ý xuyên suốt đoạn văn. Học sinh cần luyện cách xác định từ khóa liên kết ở câu trước và sau chỗ trống.'
+  }
+};
+
+/* ================= SUBMIT & GRADE ================= */
+function submitTest(){
+  if(submitted) return;
+  submitted=true;
+  clearInterval(timerInterval);
+  document.getElementById('submitBtn').disabled=true;
+  document.getElementById('submitBtn').style.opacity='0.6';
+
+  // lock all mc cards that weren't answered, and reveal correct answers for unanswered
+  Q.forEach(q=>{
+    const card=document.getElementById('card-'+q.id);
+    if(q.type==='mc'){
+      if(!answers[q.id]){
+        card.dataset.locked='1';
+        const allBtns=card.querySelectorAll('.opt-btn');
+        allBtns.forEach(b=>{ b.classList.add('locked'); if(b.dataset.correct==='true') b.classList.add('correct-reveal'); });
+        answers[q.id]={correct:false};
+      }
+    } else {
+      const inputEl=document.getElementById('fill-'+q.id);
+      const val = inputEl ? inputEl.value : '';
+      inputEl.disabled=true;
+      const norm = normalize(val);
+      const isCorrect = q.accepted.some(a=>normalize(a)===norm);
+      answers[q.id]={correct:isCorrect, value:val};
+      inputEl.style.border = isCorrect? '3px solid #00D26A' : '3px solid #FF4757';
+      inputEl.style.background = isCorrect? '#E3FCEF':'#FFE7E9';
+    }
+    document.getElementById('explain-'+q.id).style.display='block';
+  });
+
+  // tally
+  let totalCorrect=0;
+  const catStats={};
+  Q.forEach(q=>{
+    const cat=q.cat;
+    if(!catStats[cat]) catStats[cat]={correct:0,total:0,wrongIds:[]};
+    catStats[cat].total++;
+    if(answers[q.id].correct){ catStats[cat].correct++; totalCorrect++; }
+    else { catStats[cat].wrongIds.push(q.id); }
+  });
+
+  showResultModal(totalCorrect, catStats);
+}
+
+function levelOf(pct){
+  if(pct>80) return {tag:'mastered', label:'Đã nắm chắc'};
+  if(pct>=50) return {tag:'practice', label:'Chưa ổn định / Hay nhầm lẫn'};
+  return {tag:'weak', label:'Hổng kiến thức / Yếu kém'};
+}
+
+function showResultModal(totalCorrect, catStats){
+  const pct = Math.round((totalCorrect/50)*100);
+  document.documentElement.style.setProperty('--pct', pct);
+
+  let comment;
+  if(pct>=90) comment='Xuất sắc! Con đã làm rất tốt bài kiểm tra này, hãy tiếp tục phát huy nhé! 🌟';
+  else if(pct>=75) comment='Khá tốt! Con đã nắm khá vững kiến thức, chỉ cần ôn thêm một vài điểm nhỏ nữa thôi! 💪';
+  else if(pct>=50) comment='Con đã có nền tảng ổn, tuy nhiên cần luyện tập thêm để chắc chắn hơn nhé! 📚';
+  else comment='Con cần cố gắng ôn tập nhiều hơn ở các phần còn yếu, đừng nản lòng, cô tin con sẽ tiến bộ! 🌈';
+
+  let matrixRows='';
+  let reportBlocks='';
+  Object.keys(catStats).forEach(cat=>{
+    const s=catStats[cat];
+    const pctCat=Math.round((s.correct/s.total)*100);
+    const lvl=levelOf(pctCat);
+    matrixRows += `<tr><td>${cat}</td><td>${s.correct}/${s.total} (${pctCat}%)</td><td><span class="tag ${lvl.tag}">${lvl.label}</span></td></tr>`;
+    if(lvl.tag!=='mastered'){
+      const rc = ROOT_CAUSE[cat] || {cause:'Cần ôn tập thêm', detail:'Học sinh cần luyện tập thêm dạng bài này.'};
+      const careless = (s.total - s.wrongIds.length)/s.total > 0.6 && s.wrongIds.length<=1;
+      reportBlocks += `<div class="report-block">
+        <h4>⚠️ ${cat} - ${lvl.label} (${pctCat}%)</h4>
+        <div>Số câu sai: Câu ${s.wrongIds.join(', Câu ')}.</div>
+        <div><b>Nguyên nhân gốc rễ:</b> ${careless? 'Phần lớn kiến thức đã nắm được, lỗi sai có khả năng do làm ẩu/thiếu tập trung (Careless mistake) nhiều hơn là do hổng kiến thức.' : rc.cause}</div>
+        <div>${careless? 'Con nên đọc lại đề kỹ hơn trước khi chọn đáp án, đặc biệt chú ý các từ phủ định và yêu cầu của câu hỏi.' : rc.detail}</div>
+      </div>`;
+    }
+  });
+
+  let strengths = Object.keys(catStats).filter(c=>levelOf(Math.round((catStats[c].correct/catStats[c].total)*100)).tag==='mastered');
+  let strengthText = strengths.length>0 ? `Học sinh đã nắm rất chắc các mảng: <b>${strengths.join(', ')}</b>.` : `Học sinh cần ôn tập lại toàn diện các mảng kiến thức trong đề.`;
+
+  const modal=document.getElementById('modalContent');
+  modal.innerHTML = `
+    <h2>🎉 KẾT QUẢ BÀI KIỂM TRA 🎉</h2>
+    <div class="score-circle"><div class="score-circle-inner"><div class="big">${totalCorrect}/50</div><div>${pct}%</div></div></div>
+    <p style="text-align:center; font-weight:700; color:#8854C0;">${comment}</p>
+    <h3 style="color:#8854C0; font-family:'Quicksand',sans-serif;">📊 Ma trận năng lực theo chuyên đề</h3>
+    <table class="matrix-table">
+      <tr><th>Chuyên đề</th><th>Số câu đúng</th><th>Mức độ</th></tr>
+      ${matrixRows}
+    </table>
+    <h3 style="color:#8854C0; font-family:'Quicksand',sans-serif;">📋 BÁO CÁO NĂNG LỰC HỌC SINH</h3>
+    <div class="report-block"><h4>✅ Điểm mạnh</h4><div>${strengthText}</div></div>
+    ${reportBlocks || '<div class="report-block"><h4>✅ Tuyệt vời!</h4><div>Học sinh không có mảng kiến thức nào ở mức yếu hoặc cần luyện tập thêm.</div></div>'}
+    <button class="close-modal-btn" onclick="closeModal()">Xem lại bài làm</button>
+  `;
+  document.getElementById('modalOverlay').classList.add('show');
+
+  if(pct>=50){ playDing(); confettiBurst(80); }
+  else { playBuzz(); }
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('show');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
